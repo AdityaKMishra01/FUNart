@@ -1,6 +1,6 @@
 # FUNart
 
-Welcome to FUNart! This application allows you to create and save your drawings with ease. Whether you're a professional artist or just looking to doodle, this app provides a simple and intuitive interface for all your drawing needs.
+Welcome to FUNart! This application allows you to create and save your drawings with ease. This app provides a simple and intuitive interface for all your drawings.
 
 ## Features
 

@@ -9,6 +9,14 @@ Welcome to FUNart! This application allows you to create and save your drawings 
 - **Color Picker**: A comprehensive color picker allows you to select any color for your brush.
 - **Save Your Drawings**: Save your creations locally to your device.
 
+## Technology Used
+
+- **HTML**
+- **CSS**
+- **Javascript**
+- **React**
+- **Canvas**
+
 ## Demo
 
 Check out the live demo of the app here: [FUNart](https://funart-rouge.vercel.app)

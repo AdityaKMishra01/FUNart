@@ -20,7 +20,7 @@ const SideBar = ({
         <button className={`io ${inout ? "visible" : ""}`} onClick={clkbtn} title="Tools">
           <i class={`fa-solid fa-angle-${inout ? 'left' : 'right'}`}></i>
         </button>
-        <select onChange={(e) => handlefont(e)}>
+        <select onChange={(e) => handlefont(e)} title="Brush Sizes">
           <option value="2px">2px</option>
           <option value="5px">5px</option>
           <option value="10px">10px</option>

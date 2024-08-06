@@ -19,16 +19,25 @@ const Canvas = ({
   mouseLeave,
   rectangle,
   circle,
-  line
+  line,
 }) => {
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      // Get canvas dimensions from CSS
+      const style = window.getComputedStyle(canvas);
+      const width = parseInt(style.width, 10);
+      const height = parseInt(style.height, 10);
+
+      // Set canvas internal dimensions
+      canvas.width = width;
+      canvas.height = height;
+    }
+  }, [canvasRef]);
   return (
     <>
       <div className="container">
-        <Navbar
-        DownloadImg={DownloadImg}
-        clear={clear}
-        retrive={retrive}
-        />
+        <Navbar DownloadImg={DownloadImg} clear={clear} retrive={retrive} />
         <div className="btns">
           <div className="color-picker">
             <label>Font Color</label>
@@ -48,31 +57,31 @@ const Canvas = ({
               onChange={(e) => handlebg(e)}
             />
           </div>
-          
         </div>
         <div className="mainBox">
           <SideBar
-          rectangle={rectangle}   
-          line={line}
-          circle={circle}
-          handlefont={handlefont}
+            rectangle={rectangle}
+            line={line}
+            circle={circle}
+            handlefont={handlefont}
           />
-        <canvas
-          ref={canvasRef}
-          width={1300}
-          height={600}
-          onMouseDown={startDrawing}
-          onMouseUp={stopDrawing}
-          onMouseMove={Draw}
-          onMouseLeave={mouseLeave}
-          onTouchStart={startDrawing}
-          onTouchMove={Draw}
-          onTouchEnd={stopDrawing}
-        />
-        <Links/>
+          <div className="canCont">
+            <canvas
+              className="canvas"
+              ref={canvasRef}
+              onMouseDown={startDrawing}
+              onMouseUp={stopDrawing}
+              onMouseMove={Draw}
+              onMouseLeave={mouseLeave}
+              onTouchStart={startDrawing}
+              onTouchMove={Draw}
+              onTouchEnd={stop}
+            />
+          </div>
+          <Links />
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 };

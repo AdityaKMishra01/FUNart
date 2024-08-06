@@ -23,14 +23,29 @@ function App() {
   });
 
   useEffect(()=>{
+    if (ctx) {
+      ctx.fillStyle = bgcolr;
+      ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
+    }
     setTimeout(()=>{
       setLoading(false);
     },3000);
-  })
+  },[ctx,bgcolr])
+
+  const getCordinates = (e)=>{
+    if(e.type.includes('mouse')){
+     return {x:e.nativeEvent.offsetX,y:e.nativeEvent.offsetY}
+    }else{
+      const rect = canvasRef.current.getBoundingClientRect()
+      return{
+        x:e.touches[0].clientX - rect.left,
+        y:e.touches[0].clientY - rect.top
+      }
+    }
+  }
 
   const startDrawing = (e) => {
-    let x = e.nativeEvent.offsetX;
-    let y = e.nativeEvent.offsetY;
+    const {x,y} = getCordinates(e);
     setImgData(ctx.getImageData(0,0,canvasRef.current.width,canvasRef.current.height));
     setStartP({ x, y });
     setIsDrawing(true);
@@ -41,9 +56,7 @@ function App() {
 
   const Draw = (e) => {
     if (!isDrawing) return;
-
-    let x = e.nativeEvent.offsetX;
-    let y = e.nativeEvent.offsetY;
+    const { x, y } = getCordinates(e);
 
     if (shape === "line") {
       ctx.lineWidth = fontSize;

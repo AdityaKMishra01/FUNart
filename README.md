@@ -16,6 +16,7 @@ Welcome to FUNart! This application allows you to create and save your drawings 
 - **Javascript**
 - **React**
 - **Canvas**
+- **Vercel**
 
 ## Demo
 

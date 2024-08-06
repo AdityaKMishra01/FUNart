@@ -65,6 +65,9 @@ const Canvas = ({
           onMouseUp={stopDrawing}
           onMouseMove={Draw}
           onMouseLeave={mouseLeave}
+          onTouchStart={startDrawing}
+          onTouchMove={Draw}
+          onTouchEnd={stopDrawing}
         />
         <Links/>
         </div>

@@ -129,7 +129,7 @@ function App() {
 
   const clear = () => {
     ctx.clearRect(0, 0, canvasRef.current.width, canvasRef.current.height);
-    ctx.fillStyle = bgcolr;
+    ctx.fillStyle = "#FFFFFF";
     ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
   };
 

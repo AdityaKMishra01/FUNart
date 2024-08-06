@@ -19,21 +19,43 @@ const Canvas = ({
   mouseLeave,
   rectangle,
   circle,
-  line,
+  line
 }) => {
+  const canvas = canvasRef.current;
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (canvas) {
-      // Get canvas dimensions from CSS
-      const style = window.getComputedStyle(canvas);
-      const width = parseInt(style.width, 10);
-      const height = parseInt(style.height, 10);
-
-      // Set canvas internal dimensions
-      canvas.width = width;
-      canvas.height = height;
+    const updatesize = ()=>{
+      const ctx = canvas.getContext('2d');
+      const Rect = canvas.getBoundingClientRect();
+      const imageData = ctx.getImageData(0,0,canvas.width,canvas.height);
+      canvas.width = Rect.width;
+      canvas.height = Rect.height;
+      ctx.putImageData(imageData,0,0)
     }
-  }, [canvasRef]);
+
+    if(canvas){
+    updatesize();
+    window.addEventListener("resize",updatesize)
+
+    const preventdefault = (e)=>{
+      e.preventDefault();
+    }
+
+    window.addEventListener('scroll',preventdefault)
+    canvas.addEventListener('touchstart',preventdefault,{ passive: false });
+    canvas.addEventListener('touchmove',preventdefault,{ passive: false });
+    canvas.addEventListener("touchend", preventdefault, { passive: false });
+
+    return () => {
+      window.removeEventListener("resize", updatesize);
+      window.removeEventListener('scroll', preventdefault);
+      canvas.removeEventListener('touchstart', preventdefault);
+      canvas.removeEventListener('touchmove', preventdefault);
+      canvas.removeEventListener("touchend", preventdefault);
+    }
+  }
+
+
+  },[canvas]);
   return (
     <>
       <div className="container">

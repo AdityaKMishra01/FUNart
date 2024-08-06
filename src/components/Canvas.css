@@ -245,3 +245,12 @@ canvas{
   .link3:hover{
     background: #242424;
   }
+
+  /* responsive */
+
+  @media screen and (max-width:500px) {
+    canvas{
+      width: 350px;
+      height: 600px;
+    }
+  }

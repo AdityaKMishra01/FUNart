@@ -24,7 +24,7 @@ function App() {
 
   useEffect(()=>{
     if (ctx) {
-      ctx.fillStyle = "#FFFFFF";
+      ctx.fillStyle = bgcolr;
       ctx.fillRect(0, 0, canvasRef.current.width, canvasRef.current.height);
     }
     setTimeout(()=>{

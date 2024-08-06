@@ -248,9 +248,35 @@ canvas{
 
   /* responsive */
 
-  @media screen and (max-width:500px) {
+  @media screen and (max-width:400px) {
     canvas{
       width: 350px;
       height: 600px;
+    }
+    .navBar img{
+      margin-left: 10px;
+      width: 130px;
+      height: 60px;
+    }
+    .inpCont{
+      margin-right: 25px;
+    }
+    .linkCont{
+      position: absolute;
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+      justify-content: center;
+      bottom: -140px;
+      right: 110px;
+    }
+    .mainBox{
+      margin-top: -60px;
+    }
+    .oprBtns{
+      top: 223px;
+    }
+    .io{
+      top: 210px;
     }
   }
